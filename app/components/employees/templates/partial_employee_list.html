@@ -1,0 +1,48 @@
+<div>
+    Row Number : <input type="number" step="1" min="0" max="10" ng-model="rowLimit"/>
+    Sort By:
+                <select ng-model="sortColumn">
+                    <option value="name">Name ASC</option>
+                    <option value="-name">Name desc</option>
+                    <option value="salary">Salary ASC</option>
+                    <option value="-salary">Salary DESC</option>
+                    <option value="age">age ASC</option>
+                </select>
+    Search : <input type="text" placeholder="Search" ng-model="searchText"/>
+
+    Search by name only : <input type="text" placeholder="Search By Name" ng-model="searchName"/>
+
+    Salary Hide : <input type="checkbox" ng-model="salaryHide"/>
+    <br/><br/>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+        <th ng-click="sortData('name')">
+            Name<span ng-class="getSortClass('name')"></span>
+        </th>
+        <th ng-click="sortData('age')">
+            Age<span ng-class="getSortClass('age')"></span>
+        </th>
+
+        <th ng-click="sortData('gender')">
+            Gender<span ng-class="getSortClass('gender')"></span>
+        </th>
+        <th ng-click="sortData('salary')">
+            Salary<span ng-class="getSortClass('salary')"></span>
+        </th>
+        <th class="col-sm-1">Increment/Decrement</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in employees | limitTo:rowLimit | orderBy : sortColumn:reverseSort |filter:searchText | filter:search">
+            <td>{{employee.name}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.gender}}</td>
+            <td ng-hide="salaryHide">{{employee.salary | currency:'$':3}}</td>
+            <td ng-show="salaryHide">**********</td>
+            <td class="col-sm-1">
+                <input type="button" value="+" ng-click="salaryIcrement(employee)">
+                <input type="button" value="-" ng-click="salaryDecrement(employee)">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
