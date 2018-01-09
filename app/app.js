@@ -1,7 +1,7 @@
 var routerApp = angular.module('routerApp',
     [
         'ui.router',
-        'routerApp.scotch',
+        'routerApp.home',
         'routerApp.employee',
         'routerApp.github',
         'routerApp.path',
@@ -16,13 +16,8 @@ routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
 
         .state('home', {
             url: '/home',
+            controller: 'homeController',
             templateUrl: 'app/components/home/templates/partial_home.html'
-        })
-
-        .state('home.list', {
-            url: '/list',
-            templateUrl: 'app/components/home/templates/partial_home_list.html',
-            controller: 'homeController'
         })
         .state('home.paragraph', {
             url: '/paragraph',
