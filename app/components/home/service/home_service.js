@@ -4,7 +4,7 @@ homeService.$inject = ['$http', '$q', '$timeout'];
 function homeService($http, $q, $timeout) {
 
     function getFollowersOfTweeter() {
-        return $http.jsonp('http://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=sanjoykdeb')
+        return $http.jsonp('https://syndication.twitter.com/timeline/profile?callback=true&dnt=false&screen_name=sanjoykdeb')
             .then(function (response) {
                 console.log(response);
                 return response;

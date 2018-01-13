@@ -6,4 +6,20 @@ var shellApp = angular.module('routerApp.shell', [])
 shellController.$inject = ['$window', '$scope','shellService'];
 
 function shellController($window, $scope,shellService) {
+    $scope.navbar = [];
+    var currentActive = '';
+    $scope.clickOnSidebar = function (name) {
+        if(currentActive)
+        {
+            $scope.navbar[currentActive] = '';
+        }
+        currentActive = name;
+        if(name === 'logo')
+        {
+            $scope.navbar['home'] = 'active';
+            currentActive = 'home';
+        }
+        $scope.navbar[name] = 'active';
+        console.log($scope.navbar[name]);
+    }
 }

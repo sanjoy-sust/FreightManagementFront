@@ -45,7 +45,12 @@ routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
 
         .state('github', {
             url: '/github',
-            templateUrl: 'app/components/github/templates/github_view.html',
+            templateUrl: 'app/components/github/templates/github_project_view.html',
+            controller: 'githubController'
+        })
+        .state('github_user', {
+            url: '/github_user',
+            templateUrl: 'app/components/github/templates/github_user_view.html',
             controller: 'githubController'
         })
         .state('path', {
