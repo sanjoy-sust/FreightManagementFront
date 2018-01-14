@@ -2,6 +2,7 @@ var routerApp = angular.module('routerApp',
     [
         'ui.router',
         'routerApp.home',
+        'routerApp.about',
         'routerApp.employee',
         'routerApp.github',
         'routerApp.path',
@@ -19,21 +20,10 @@ routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
             controller: 'homeController',
             templateUrl: 'app/components/home/templates/partial_home.html'
         })
-        .state('home.paragraph', {
-            url: '/paragraph',
-            template: 'I could sure use a drink right now.'
-        })
-
         .state('about', {
             url: '/about',
-            views: {
-                '': {templateUrl: 'app/components/about/templates/partial_about.html'},
-                'columnOne@about': {template: 'Look I am a column!'},
-                'columnTwo@about': {
-                    templateUrl: 'app/shared/templates/table_data.html',
-                    controller: 'homeController'
-                }
-            }
+            controller: 'aboutController',
+            templateUrl: 'app/components/about/templates/about_view.html'
 
         })
 

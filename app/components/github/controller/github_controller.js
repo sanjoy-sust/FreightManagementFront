@@ -1,8 +1,9 @@
 var githubApp = angular.module('routerApp.github', [])
     .controller('githubController', githubController);
-githubController.$inject = ['$window', '$scope', 'githubService'];
+githubController.$inject = ['$window', '$scope','$rootScope', 'githubService'];
 
-function githubController($window, $scope, githubService) {
+function githubController($window, $scope,$rootScope, githubService) {
+    $rootScope.title = "Github";
     var projectInfo = githubService.getProjectInfo();
     projectInfo.then(function (response) {
             $scope.projectInfo = response;

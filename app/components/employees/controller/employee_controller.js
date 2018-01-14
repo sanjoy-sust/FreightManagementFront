@@ -1,10 +1,11 @@
 var employeeApp = angular.module('routerApp.employee', [])
     .controller('employeeController', employeeController);
-employeeController.$inject = ['$window', '$scope','employeeService'];
+employeeController.$inject = ['$window', '$scope','$rootScope','employeeService'];
 
-function employeeController($window, $scope,employeeService) {
+function employeeController($window, $scope,$rootScope,employeeService) {
 
 
+    $rootScope.title = "Employees";
     $scope.employees = employeeService.buildEmployee();
 
     $scope.salaryIcrement = function (employee) {
