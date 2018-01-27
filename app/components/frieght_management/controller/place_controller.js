@@ -7,6 +7,7 @@ placeController.$inject = ['$window','$rootScope', '$scope','placeService'];
 
 function placeController($window,$rootScope, $scope ,placeService) {
     $rootScope.title = "Places";
+    $rootScope.subMenu = "place";
     var places = placeService.getAllPlaces();
     places.then(function (response) {
             $scope.places = response;

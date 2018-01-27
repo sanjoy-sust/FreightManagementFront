@@ -7,6 +7,7 @@ pathController.$inject = ['$window','$rootScope', '$scope','pathService'];
 
 function pathController($window,$rootScope, $scope ,pathService) {
     $rootScope.title = "Paths";
+    $rootScope.subMenu = "path";
     var projects = pathService.getAllPaths();
     projects.then(function (response) {
             $scope.paths = response;
