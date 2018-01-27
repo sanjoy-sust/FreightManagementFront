@@ -15,7 +15,22 @@
                     <p>Home</p>
                 </a>
             </li>
-            <li ng-click="clickOnSidebar('about')" class="{{navbar['about']}}">
+
+            <li ng-click="clickOnSidebar('place')" class="{{navbar['place']}}">
+                <a ui-sref="place">
+                    <i class="ti-plug"></i>
+                    <p>Place</p>
+                </a>
+            </li>
+
+            <li ng-click="clickOnSidebar('path')" class="{{navbar['path']}}">
+                <a ui-sref="path">
+                    <i class="ti-map"></i>
+                    <p>Path</p>
+                </a>
+            </li>
+
+         <!--   <li ng-click="clickOnSidebar('about')" class="{{navbar['about']}}">
                 <a ui-sref="about">
                     <i class="ti-bell"></i>
                     <p>About</p>
@@ -26,7 +41,7 @@
                     <i class="ti-view-list-alt"></i>
                     <p>Employee</p>
                 </a>
-            </li>
+            </li>-->
             <li ng-click="clickOnSidebar('github')" class="{{navbar['github']}}">
                 <a ui-sref="github">
                     <i class="ti-text"></i>

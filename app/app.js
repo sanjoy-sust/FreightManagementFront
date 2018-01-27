@@ -6,7 +6,8 @@ var routerApp = angular.module('routerApp',
         'routerApp.employee',
         'routerApp.github',
         'routerApp.path',
-        'routerApp.shell'
+        'routerApp.shell',
+        'routerApp.place'
     ]);
 
 routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
@@ -20,18 +21,19 @@ routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
             controller: 'homeController',
             templateUrl: 'app/components/home/templates/partial_home.html'
         })
-        .state('about', {
-            url: '/about',
-            controller: 'aboutController',
-            templateUrl: 'app/components/about/templates/about_view.html'
 
-        })
+        /*
+            .state('about', {
+                url: '/about',
+                controller: 'aboutController',
+                templateUrl: 'app/components/about/templates/about_view.html'
 
-        .state('employee', {
-            url: '/employee',
-            templateUrl: 'app/components/employees/templates/partial_employee_list.html',
-            controller: 'employeeController'
-        })
+            })
+      .state('employee', {
+                url: '/employee',
+                templateUrl: 'app/components/employees/templates/partial_employee_list.html',
+                controller: 'employeeController'
+            })*/
 
         .state('github', {
             url: '/github',
@@ -42,6 +44,11 @@ routerApp.config(function ($stateProvider, $urlRouterProvider, $urlMatcherFactor
             url: '/github_user',
             templateUrl: 'app/components/github/templates/github_user_view.html',
             controller: 'githubController'
+        })
+        .state('place', {
+            url: '/place',
+            templateUrl: 'app/components/frieght_management/templates/place_view.html',
+            controller: 'placeController'
         })
         .state('path', {
             url: '/path',
