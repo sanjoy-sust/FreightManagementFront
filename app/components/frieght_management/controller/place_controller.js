@@ -8,6 +8,7 @@ placeController.$inject = ['$window','$rootScope', '$scope','placeService'];
 function placeController($window,$rootScope, $scope ,placeService) {
     $rootScope.title = "Places";
     $rootScope.subMenu = "place";
+    $scope.view = "app/components/frieght_management/templates/place/place_list.html";
     var places = placeService.getAllPlaces();
     places.then(function (response) {
             $scope.places = response;
@@ -16,6 +17,6 @@ function placeController($window,$rootScope, $scope ,placeService) {
 
         });
     $scope.addPlace = function () {
-        console.log('add Place')
+        $scope.view = "app/components/frieght_management/templates/place/place_add.html";
     }
 }
