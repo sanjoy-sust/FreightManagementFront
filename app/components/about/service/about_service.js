@@ -12,5 +12,4 @@ aboutApp.factory("aboutService",function () {
             return employees;
         }
     }
-
-}
+});

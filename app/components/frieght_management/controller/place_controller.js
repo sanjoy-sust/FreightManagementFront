@@ -3,12 +3,12 @@
  */
 var placeApp = angular.module('routerApp.place', [])
     .controller('placeController', placeController);
-placeController.$inject = ['$window','$rootScope', '$scope','placeService'];
+placeController.$inject = ['$window','$rootScope', '$scope','placeService','mapService'];
 
-function placeController($window,$rootScope, $scope ,placeService) {
+function placeController($window,$rootScope, $scope ,placeService,mapService) {
     $rootScope.title = "Places";
     $rootScope.subMenu = "place";
-    $scope.view = "app/components/frieght_management/templates/place/place_list.html";
+    $scope.viewList = true;
     var places = placeService.getAllPlaces();
     places.then(function (response) {
             $scope.places = response;
@@ -17,6 +17,31 @@ function placeController($window,$rootScope, $scope ,placeService) {
 
         });
     $scope.addPlace = function () {
-        $scope.view = "app/components/frieght_management/templates/place/place_add.html";
+        $scope.viewList = false;
+        mapService.init();
+    };
+
+    $scope.place = {};
+    $scope.searchPlace = 'Dhaka';
+    $scope.search = function() {
+        $scope.apiError = false;
+        mapService.search($scope.searchPlace)
+            .then(
+                function(res) { // success
+                    mapService.addMarker(res);
+                    $scope.place.name = res.name;
+                    $scope.place.lat = res.geometry.location.lat();
+                    $scope.place.lng = res.geometry.location.lng();
+                },
+                function(status) { // error
+                    $scope.apiError = true;
+                    $scope.apiStatus = status;
+                }
+            );
     }
+
+    $scope.send = function() {
+        alert($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
+    }
+
 }
