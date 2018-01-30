@@ -1,30 +1,13 @@
 <div>
 
-    <h3 class="clearfix">
-        <img class="pull-left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/695px-AngularJS_logo.svg.png"/>
-        <img class="pull-right" src="http://upload.wikimedia.org/wikipedia/commons/9/9a/Google_maps_logo.png"/>
-    </h3>
-
-    <div class="alert alert-danger text-center" role="alert" ng-show="apiError">
-        <b>API Error : </b>
-        <span>{{ apiStatus }}</span>
+    <div  class="input-group">
+        <input name="place" type="text" class="form-control" ng-model="searchPlace"/>
+        <span class="input-group-btn"><button class="btn btn-primary" ng-click="search(searchPlace)">Search</button></span>
     </div>
 
-    <form name="searchForm" novalidate
-          ng-submit="search()">
-        <div class="input-group">
-            <input name="place" type="text" class="form-control"
-                   ng-model="searchPlace" required autofocus />
-            <span class="input-group-btn">
-                <button class="btn btn-primary"
-                        ng-disabled="searchForm.$invalid">Search</button>
-            </span>
-        </div>
-    </form>
+    <div class="col-lg-12" id="map">Here Map to Show</div>
 
-    <div id="map">Here Map to Show</div>
-
-    <form name="resForm" class="form-horizontal" novalidate
+    <form class="col-lg-12" name="resForm" class="form-horizontal" novalidate
           ng-submit="send()">
         <div class="form-group">
             <label for="resName" class="col-xs-2 control-label">Name</label>

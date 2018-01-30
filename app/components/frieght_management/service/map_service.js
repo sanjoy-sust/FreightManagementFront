@@ -6,6 +6,7 @@ function mapService($http, $q, $timeout) {
     var places = null;
     var marker = null;
     return {
+        mapPlace : null,
         init: function init() {
 
             var latlng = new google.maps.LatLng(39.305, -76.617);
@@ -14,10 +15,13 @@ function mapService($http, $q, $timeout) {
                 zoom: 12
             });
             places = new google.maps.places.PlacesService(map);
+            if (!this.mapPlace) {
+                this.mapPlace = places;
+            }
         },
         search:   function search(str) {
             var d = $q.defer();
-            places.textSearch({query: str}, function (results, status) {
+            this.mapPlace.textSearch({query: str}, function (results, status) {
                 if (status == 'OK') {
                     d.resolve(results[0]);
                 }

@@ -8,6 +8,7 @@ placeController.$inject = ['$window','$rootScope', '$scope','placeService','mapS
 function placeController($window,$rootScope, $scope ,placeService,mapService) {
     $rootScope.title = "Places";
     $rootScope.subMenu = "place";
+
     $scope.viewList = true;
     var places = placeService.getAllPlaces();
     places.then(function (response) {
@@ -22,10 +23,9 @@ function placeController($window,$rootScope, $scope ,placeService,mapService) {
     };
 
     $scope.place = {};
-    $scope.searchPlace = 'Dhaka';
-    $scope.search = function() {
+    $scope.search = function(searchPlace) {
         $scope.apiError = false;
-        mapService.search($scope.searchPlace)
+        mapService.search(searchPlace)
             .then(
                 function(res) { // success
                     mapService.addMarker(res);
