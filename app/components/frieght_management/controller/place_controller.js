@@ -22,16 +22,36 @@ function placeController($window,$rootScope, $scope ,placeService,mapService) {
         mapService.init();
     };
 
-    $scope.place = {};
-    $scope.search = function(searchPlace) {
+    $scope.placeSource = {};
+    $scope.placeDestination = {};
+
+    $scope.searchSource = function (searchPlace) {
+        search(searchPlace,'source');
+    }
+
+    $scope.searchDestination = function (searchPlace) {
+       search(searchPlace,'destination');
+    }
+
+    function search(searchPlace,dir) {
         $scope.apiError = false;
-        mapService.search(searchPlace)
+        mapService.search(searchPlace,dir)
             .then(
                 function(res) { // success
-                    mapService.addMarker(res);
-                    $scope.place.name = res.name;
-                    $scope.place.lat = res.geometry.location.lat();
-                    $scope.place.lng = res.geometry.location.lng();
+
+                    if(dir === 'source'){
+                        mapService.addMarker(res,dir);
+                        $scope.placeSource.name = res.name;
+                        $scope.placeSource.lat = res.geometry.location.lat();
+                        $scope.placeSource.lng = res.geometry.location.lng();
+                    }
+                    if(dir === 'destination'){
+                        mapService.addMarker(res,dir);
+                        $scope.placeDestination.name = res.name;
+                        $scope.placeDestination.lat = res.geometry.location.lat();
+                        $scope.placeDestination.lng = res.geometry.location.lng();
+                    }
+
                 },
                 function(status) { // error
                     $scope.apiError = true;
@@ -41,7 +61,7 @@ function placeController($window,$rootScope, $scope ,placeService,mapService) {
     }
 
     $scope.send = function() {
-        alert($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);
+        alert($scope.placeSource.nameSource + ' : ' + $scope.placeSource.latSource + ', ' + $scope.placeSource.lngSource);
     }
 
 }

@@ -16,8 +16,15 @@
     display: inline-block;
 }
 
-#map {
-    height: 400px;
+#mapSource {
+    height: 200px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+#mapDestination {
+    height: 200px;
     margin: 20px 0;
     border-radius: 5px;
     border: 1px solid silver;
