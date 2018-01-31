@@ -3,9 +3,9 @@
  */
 var placeApp = angular.module('routerApp.place', [])
     .controller('placeController', placeController);
-placeController.$inject = ['$window', '$rootScope', '$scope', 'placeService', 'mapService'];
+placeController.$inject = ['$location','$window', '$rootScope', '$scope', 'placeService', 'mapService'];
 
-function placeController($window, $rootScope, $scope, placeService, mapService) {
+function placeController($location,$window, $rootScope, $scope, placeService, mapService) {
     $rootScope.title = "Places";
     $rootScope.subMenu = "place";
 
@@ -44,8 +44,8 @@ function placeController($window, $rootScope, $scope, placeService, mapService) 
                     }
                 },
                 function (status) { // error
-                    $scope.apiError = true;
-                    $scope.apiStatus = status;
+                    console.log(status);
+                    alert('Location not Found {}',status);
                 }
             );
     }
@@ -58,14 +58,17 @@ function placeController($window, $rootScope, $scope, placeService, mapService) 
         var place = {
             name: $scope.placeSource.name,
             code: Math.random(),
-            longitude: $scope.placeDestination.lng,
-            latitude: $scope.placeDestination.lng
-        }
+            longitude: $scope.placeSource.lng,
+            latitude: $scope.placeSource.lat
+        };
+        console.log('Before Save Place : {}',place);
         placeService.savePlace(place).then(function (response) {
-                console.log(response);
+                var url = 'http://localhost:63342/FreightManagementFront/#/place';
+                $location.url(url);
             },
             function (reason) {
                 console.log(reason);
+                alert('Location not added {}',reason);
             });
     }
 

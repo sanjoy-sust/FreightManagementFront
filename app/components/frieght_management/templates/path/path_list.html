@@ -1,18 +1,36 @@
 <table class="table table-hover table-striped table-bordered">
     <thead>
-    <th>Name</th>
-    <th>Code</th>
-    <th>Longitude</th>
-    <th>Latitude</th>
+
+    <th>Details</th>
+    <th>Total Cost</th>
+    <th>Total Duration</th>
 
     </thead>
     <tbody>
 
-    <tr ng-repeat="path in paths">
-        <td class="col-sm-4">{{path.name}}</td>
-        <td class="col-sm-4">{{place.code}}</td>
-        <td class="col-sm-4">{{place.longitude}}</td>
-        <td class="col-sm-4">{{place.latitude}}</td>
+    <tr ng-repeat="path in paths.results">
+        <td>
+            <table class="table">
+                <thead>
+                <th>From</th>
+                <th>To</th>
+                <th>Cost</th>
+                <th>Transport Type</th>
+                <th>Duration</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="routei in path.route">
+                    <td class="col-sm-4">{{routei.from}}</td>
+                    <td class="col-sm-4">{{routei.to}}</td>
+                    <td class="col-sm-4">{{routei.cost}}</td>
+                    <td class="col-sm-4">{{routei.transportType}}</td>
+                    <td class="col-sm-4">{{routei.duration}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="col-sm-4">{{path.totalCost}}</td>
+        <td class="col-sm-4">{{path.totalDuration}}</td>
     </tr>
 
     </tbody>
