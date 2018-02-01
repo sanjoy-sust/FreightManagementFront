@@ -1,11 +1,11 @@
 
-<div>
+<div ng-controller="pathController">
 
     <div class = "col-md-6 text-center">
         <b>Source</b>
         <div  class="input-group">
             <input name="placeSource" type="text" class="form-control" ng-model="searchPlaceSource"/>
-            <span class="input-group-btn"><button class="btn btn-primary" ng-click="searchSource(searchPlaceSource)">Search</button></span>
+            <span class="input-group-btn"><button class="btn btn-primary" ng-click="searchSource()">Search</button></span>
         </div>
 
         <div class="col-lg-12" id="mapSource">Here Map to Show</div>
@@ -39,7 +39,7 @@
         <b>Destination</b>
         <div  class="input-group">
             <input name="place" type="text" class="form-control" ng-model="searchPlaceDestination"/>
-            <span class="input-group-btn"><button class="btn btn-primary" ng-click="searchDestination(searchPlaceDestination)">Search</button></span>
+            <span class="input-group-btn"><button class="btn btn-primary" ng-click="searchDestination()">Search</button></span>
         </div>
 
         <div class="col-lg-12" id="mapDestination">Here Map to Show</div>
@@ -70,8 +70,22 @@
         </form>
     </div>
 
+    <div class="col-md-6 text-left">
+        <label>Cost</label>
+        <input type="number" ng-model="cost"/>
+        <label>Container Size</label>
+        <select ng-model="containerSize" ng-options="containerSize for containerSize in containerSizes"></select>
+    </div>
+
+    <div class="col-md-6 text-right input-group">
+        <label>Route Type</label>
+        <select ng-model="routeType" ng-options="routeType for routeType in routeTypes"></select>
+        <label>Duration</label>
+        <input type="number" ng-model="duration"/>
+    </div>
+
     <div class="col-md-12 text-right">
-        <button type="button" class="btn btn-primary" ng-click="savePlace()">Add</button>
+        <button type="button" class="btn btn-primary" ng-click="savePath()">Add</button>
     </div>
 
 

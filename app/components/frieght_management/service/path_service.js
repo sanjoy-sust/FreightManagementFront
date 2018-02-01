@@ -30,8 +30,25 @@ function pathService($http, $q, $timeout) {
         }, function (reason) {
             return null;
         });
+    };
+
+    function savePath(path) {
+        console.log(path);
+        return $http({
+            method: 'POST',
+            headers:{'X-TenantID': 'freight_management'},
+            data: path,
+            url: 'http://localhost:8080/path'
+        }).then(function (response) {
+            console.log(response.data);
+            return response.data;
+        }, function (reason) {
+            console.log(response.data);
+            return reason;
+        });
     }
     return {
-        getAllPaths : getAllPaths
+        getAllPaths : getAllPaths,
+        savePath : savePath
     };
 }
