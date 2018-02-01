@@ -1,0 +1,19 @@
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="place in places">
+        <td class="col-sm-4">{{place.name}}</td>
+        <td class="col-sm-4">{{place.code}}</td>
+        <td class="col-sm-4">{{place.longitude}}</td>
+        <td class="col-sm-4">{{place.latitude}}</td>
+    </tr>
+
+    </tbody>
+</table>

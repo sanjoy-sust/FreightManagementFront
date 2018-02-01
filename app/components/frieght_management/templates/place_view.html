@@ -1,0 +1,5 @@
+<div>
+    <button ng-click="addPlace()" class="btn btn-primary">Add</button>
+    <div ng-include="'app/components/frieght_management/templates/place/place_list.html'" ng-hide = "!viewList"></div>
+    <div ng-include="'app/components/frieght_management/templates/place/place_add.html'" ng-hide="viewList"></div>
+</div>

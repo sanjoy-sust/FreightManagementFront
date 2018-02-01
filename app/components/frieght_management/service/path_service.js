@@ -22,6 +22,7 @@ function pathService($http, $q, $timeout) {
         return $http({
             method: 'POST',
             data: pathJson,
+            headers:{'X-TenantID': 'freight_management'},
             url: 'http://www.localhost:8080/path/find-all-path'
         }).then(function (response) {
             console.log(response.data);

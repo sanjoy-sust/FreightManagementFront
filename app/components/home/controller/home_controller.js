@@ -1,25 +1,16 @@
-angular.module('routerApp.scotch',[])
+var homeApp = angular.module('routerApp.home',[])
     .controller('homeController',homeController);
-homeController.$inject = ['$window', '$scope'];
 
- function homeController($window,$scope) {
+homeController.$inject = ['$window','$rootScope', '$scope','homeService'];
 
-     $scope.message = 'test';
+ function homeController($window,$rootScope,$scope,homeService) {
+     $rootScope.title = "Dashboard";
+     $rootScope.subMenu = "home";
+     var followers = homeService.getFollowersOfTweeter();
+     followers.then(function (response) {
+             $scope.followers =12; /*response[0].followers_count;
+             console.log(response)*/ },
+         function (reason) {
 
-     $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
-
-     $scope.scotches = [
-         {
-             name: 'Macallan 12',
-             price: 50
-         },
-         {
-             name: 'Chivas Regal Royal Salute',
-             price: 10000
-         },
-         {
-             name: 'Glenfiddich 1937',
-             price: 20000
-         }
-     ];
+         })
  };
