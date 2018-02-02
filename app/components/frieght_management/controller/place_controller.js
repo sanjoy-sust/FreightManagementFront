@@ -26,8 +26,9 @@ function placeController($location,$window, $rootScope, $scope, placeService, ma
     $scope.placeSource = {};
     $scope.placeDestination = {};
 
-    $scope.searchSource = function (searchPlace) {
-        search(searchPlace, 'source');
+    $scope.searchSource = function () {
+        alert($scope.searchPlaceSource);
+        search($scope.searchPlaceSource, 'source');
     }
 
     function search(searchPlace, dir) {
